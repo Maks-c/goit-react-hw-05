@@ -1,38 +1,50 @@
-import {useState} from "react";
-
+import {useEffect, useState} from "react";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
+import {getFoundMovie} from "../services/moviesApi";
+// import {getFoundMovie} from "../services/moviesApi";
+// import {toast} from "react-hot-toast";
 
 export const MoviesPage = () => {
 
-  const [search, setSearch] = useState('')
+  const [query, setQuery] = useState('');
+  const [found, setFound] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get('query')
 
-  const handleNameChange = e => {
-    setSearch(e.currentTarget.value.toLowerCase());
+  useEffect(() => {
+    if(query === '') {
+    }
+
+    async function fetchItem(){
+      const item = await getFoundMovie(query);
+      setFound(item)
+    }
+    fetchItem()
+  }, [query])
+
+  useEffect(() => {
+    if(search === null) {
+    }
+
+    async function fetchItem(){
+      const item = await getFoundMovie(search)
+      setFound(item)
+    }
+    fetchItem()
+  }, [search])
+
+
+  const forForm=(searchQuery)=>{
+    setQuery(searchQuery);
+    navigate({...location,search:`query=${searchQuery}`})
   }
-  //
-  // const handleSubmit = e => {
-  //   e.preventDefault()
-  //   if(search.trim() === '') {
-  //     return alert('Please entry')
-  //   }
-  //   onSubmit(search)
-  //   setSearch('')
-  // }
-
 
   return (
     <div>
-      <h2>Введите имя поиска</h2>
-      <form>
-        <input
-          value={search}
-          name='movies'
-          type='text'
-          onChange={handleNameChange}
-        />
-      </form>
+
     </div>
-
-
   );
 };
 

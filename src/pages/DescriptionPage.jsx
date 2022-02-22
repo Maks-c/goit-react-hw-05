@@ -9,6 +9,7 @@ export const DescriptionPage = () => {
   const {itemId} = useParams()
   const [item, setItem] = useState(null)
   useEffect(() => {
+
     async function fetchItem(){
       try{
         const item = await getReviews(itemId);

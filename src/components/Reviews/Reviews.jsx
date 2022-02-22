@@ -3,7 +3,7 @@
 
 export const Reviews = ({items}) => {
 
-  console.log(items)
+
   return (
     <ul>
       {items.map(review => (

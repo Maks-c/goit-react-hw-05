@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import {getFoundMovie} from "../services/moviesApi";
-// import {getFoundMovie} from "../services/moviesApi";
-// import {toast} from "react-hot-toast";
+import {SearchBar} from "../components/SearchBar/SearchBar";
+import {FoundMovies} from "../components/MoviesPage/FoundMovies";
+
 
 export const MoviesPage = () => {
 
@@ -12,39 +13,52 @@ export const MoviesPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const search = searchParams.get('query')
-
+  console.log(found)
   useEffect(() => {
     if(query === '') {
+      return
     }
 
     async function fetchItem(){
-      const item = await getFoundMovie(query);
-      setFound(item)
+      try{
+        const item = await getFoundMovie(query);
+        setFound(item)
+      } catch (error){
+      }
     }
+
     fetchItem()
   }, [query])
 
   useEffect(() => {
     if(search === null) {
+      return
     }
 
     async function fetchItem(){
-      const item = await getFoundMovie(search)
-      setFound(item)
+      try{
+        const item = await getFoundMovie(search)
+        setFound(item)
+      } catch (error){
+      }
     }
+
     fetchItem()
   }, [search])
 
 
-  const forForm=(searchQuery)=>{
+  const forForm = (searchQuery) => {
     setQuery(searchQuery);
-    navigate({...location,search:`query=${searchQuery}`})
+    console.log()
+    navigate({...location, search: `query=${searchQuery}`})
   }
 
   return (
-    <div>
+    <>
+      <SearchBar onSubmit={forForm}/>
+      <FoundMovies found={found}/>
+    </>
 
-    </div>
   );
 };
 

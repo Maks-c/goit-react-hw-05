@@ -1,13 +1,11 @@
+import {useLocation} from "react-router-dom";
 
 
 export const MovieCard = ({item}) => {
 
-
-
-
+  const location=useLocation()
+  console.log(location)
   const releaseYear = new Date(item.release_date).getFullYear()
-
-
   return (
     <article>
       <h2>{item.title} <span>{releaseYear}</span></h2>
@@ -16,7 +14,7 @@ export const MovieCard = ({item}) => {
       <p>Overview: {item.overview}</p>
       <p>Genres: </p>
       <p>{item.genres.map(({id,name})=>{
-        return <span key={id}>{name}   </span>
+        return <span key={id}>{name} </span>
       }) }</p>
       <hr/>
     </article>

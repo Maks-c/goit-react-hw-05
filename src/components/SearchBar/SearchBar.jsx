@@ -1,13 +1,13 @@
 import {useState} from "react";
 import {ImSearch} from 'react-icons/im';
+import {useLocation} from "react-router-dom";
 
 
 export const SearchBar = ({onSubmit}) => {
   const [searchQuery, setSearchQuery] = useState('')
-
+const locationSearchBar=useLocation()
+  console.log(locationSearchBar)
   const handleQueryChange = (e) => {
-    console.log(e.currentTarget.value)
-
     setSearchQuery(e.currentTarget.value.toLowerCase());
   };
 
@@ -17,16 +17,12 @@ export const SearchBar = ({onSubmit}) => {
       return;
     }
     onSubmit(searchQuery);
-    console.log(searchQuery)
     setSearchQuery('')
   };
-
-
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-
         <input
           name='query'
           type="text"

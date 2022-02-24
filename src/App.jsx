@@ -6,17 +6,17 @@ import {MoviesPage} from "./pages";
 import {MovieDetailsPage} from "./pages";
 import {ActorsPage} from "./pages";
 import {DescriptionPage} from "./pages";
+
 export const App = () => {
   return (
     <>
+      <Navigation/>
       <Routes>
-        <Route path='/' element={<Navigation/>}>
-          <Route index element={<HomePage/>}/>
-          <Route path='movies' element={<MoviesPage/>}/>
-          <Route path='movies/:itemId' element={<MovieDetailsPage/>}>
-            <Route path='cast' element={<ActorsPage/>}/>
-            <Route path='reviews' element={<DescriptionPage/>}/>
-          </Route>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='movies' element={<MoviesPage/>}/>
+        <Route path='movies/:itemId' element={<MovieDetailsPage/>}>
+          <Route path='cast' element={<ActorsPage/>}/>
+          <Route path='reviews' element={<DescriptionPage/>}/>
         </Route>
       </Routes>
     </>

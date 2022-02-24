@@ -1,5 +1,4 @@
 export const Cast = ({items}) => {
-  console.log(items)
   return (
     <>
       {items && (

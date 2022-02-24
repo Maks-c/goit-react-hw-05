@@ -13,7 +13,7 @@ export const MoviesPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const search = searchParams.get('query')
-  console.log(found)
+
   useEffect(() => {
     if(query === '') {
       return
@@ -22,7 +22,9 @@ export const MoviesPage = () => {
     async function fetchItem(){
       try{
         const item = await getFoundMovie(query);
-        setFound(item)
+        const movieItem = item.map(({id, overview, poster_path, title}) => ({id, overview, poster_path, title}))
+        setFound(movieItem)
+
       } catch (error){
       }
     }
@@ -38,7 +40,8 @@ export const MoviesPage = () => {
     async function fetchItem(){
       try{
         const item = await getFoundMovie(search)
-        setFound(item)
+        const searchMovie = item.map(({id, overview, poster_path, title}) => ({id, overview, poster_path, title}))
+        setFound(searchMovie)
       } catch (error){
       }
     }
@@ -49,14 +52,14 @@ export const MoviesPage = () => {
 
   const forForm = (searchQuery) => {
     setQuery(searchQuery);
-    console.log()
     navigate({...location, search: `query=${searchQuery}`})
   }
+  console.log(location)
 
   return (
     <>
       <SearchBar onSubmit={forForm}/>
-      <FoundMovies found={found}/>
+      <FoundMovies founds={found}/>
     </>
 
   );

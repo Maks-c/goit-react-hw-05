@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageGalleryStyle,ImageGalleryItemImage,ImageGalleryItemStyle,Container,LinkStyle} from "./MainPageStyle";
+import {ImageGalleryStyle,ImageGalleryItemImage,ImageGalleryItemStyle,Container} from "./MainPageStyle";
 import {Link, useLocation} from "react-router-dom";
 
 export const MainPage = ({items}) => {
@@ -18,6 +18,7 @@ const location=useLocation()
               </Link>
             </ImageGalleryItemStyle>)}
         </ImageGalleryStyle>
+
       </main>
     </Container>
   );

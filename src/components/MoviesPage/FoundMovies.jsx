@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import {useLocation} from "react-router-dom";
-import {ListFoundStyle,ImageFoundItem,Container,ImageFound} from "./FoundMoviesStyle";
+import {ListFoundStyle,ImageFoundItem,Container,ImageFound,StyledLink} from "./FoundMoviesStyle";
 
 
 export const FoundMovies = ({founds}) => {
@@ -12,10 +11,10 @@ const location=useLocation()
         {founds.map(({id, title, poster_path}) => {
           return (
             <ImageFoundItem key={id}>
+              <StyledLink to={`/movies/${id}`} state={{from:location}}>
               <ImageFound src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title}/>
-              <div>
-                <Link to={`/movies/${id}`} state={{from:location}}>{title}</Link>
-              </div>
+                {title}</StyledLink>
+
             </ImageFoundItem>
           );
         })}

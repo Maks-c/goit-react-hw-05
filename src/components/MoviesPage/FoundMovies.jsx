@@ -13,7 +13,7 @@ const location=useLocation()
             <li key={id}>
               <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title}/>
               <div>
-                <Link to={{pathname:`/movies/${id}`, state: {from:6}}}>{title}</Link>
+                <Link to={`/movies/${id}`} state={{from:location}}>{title}</Link>
               </div>
             </li>
           );

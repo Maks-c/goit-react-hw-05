@@ -1,19 +1,19 @@
-import {NavLink, Outlet} from "react-router-dom";
-import styled from "styled-components";
-import {Toaster} from "react-hot-toast";
+import { NavLink, Outlet } from 'react-router-dom';
+import styled from 'styled-components';
+import { Toaster } from 'react-hot-toast';
 
 const Nav = styled.nav`
   display: flex;
   gap: 20px;
   margin-left: 10px;
 
-`
+`;
 
 const Link = styled(NavLink)`
   &.active {
     color: tomato;
   }
-`
+`;
 
 export const Navigation = () => {
   return (
@@ -22,10 +22,10 @@ export const Navigation = () => {
         <Link to='/'>Home</Link>
         <Link to='/movies'>Movies</Link>
       </Nav>
-      <hr/>
-      <Outlet/>
+      <hr />
+      <Outlet />
       <Toaster
-        position="top-center"
+        position='top-center'
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}

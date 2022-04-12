@@ -18,7 +18,9 @@ const Global = createGlobalStyle`
   }
 
   body {
-    margin: 0;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     color: #212121;

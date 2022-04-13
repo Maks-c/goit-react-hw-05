@@ -1,16 +1,28 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
+import {lazy,Suspense} from 'react';
 import {Navigation} from "./components/Navigation/Navigation";
-import {HomePage} from "./pages"
-import {MoviesPage} from "./pages";
-import {MovieDetailsPage} from "./pages";
-import {ActorsPage} from "./pages";
-import {DescriptionPage} from "./pages";
+
+const loader= componentName=>{
+  return lazy(()=>
+    import(`./pages/${componentName}`).then(module=>({
+      default:module[componentName]
+    }))
+  );
+};
+
+const HomePage = loader('HomePage')
+const MoviesPage = loader('MoviesPage')
+const MovieDetailsPage = loader('MovieDetailsPage')
+const ActorsPage = loader('ActorsPage')
+const DescriptionPage = loader('DescriptionPage')
+
 
 export const App = () => {
   return (
     <>
       <Navigation/>
+      <Suspense fallback=''>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='movies' element={<MoviesPage/>}/>
@@ -19,6 +31,7 @@ export const App = () => {
           <Route path='reviews' element={<DescriptionPage/>}/>
         </Route>
       </Routes>
+      </Suspense>
     </>
 
   )

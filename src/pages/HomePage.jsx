@@ -5,7 +5,6 @@ import {Loader} from "../components/Loader/Loader";
 
 export const HomePage = () => {
 
-
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
 

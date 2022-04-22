@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {ImSearch} from 'react-icons/im';
-
+import { SearchForm,InputForm,ButtonForm } from './SearchBarStyle';
+import PropTypes from 'prop-types';
 
 
 export const SearchBar = ({onSubmit}) => {
@@ -21,8 +22,8 @@ export const SearchBar = ({onSubmit}) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
+      <SearchForm onSubmit={handleSubmit}>
+        <InputForm
           name='query'
           type="text"
           autoComplete="off"
@@ -30,8 +31,13 @@ export const SearchBar = ({onSubmit}) => {
           placeholder="Search movies"
           onChange={handleQueryChange}
         />
-        <button type="submit">Search<ImSearch/></button>
-      </form>
+        <ButtonForm type="submit">Search<ImSearch/></ButtonForm>
+      </SearchForm>
     </>
   );
+}
+
+
+SearchBar.propTypes={
+  onSubmit:PropTypes.func.isRequired
 }

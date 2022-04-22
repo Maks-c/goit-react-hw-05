@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { ListFoundStyle, ImageFoundItem, Container, ImageFound, StyledLink } from './FoundMoviesStyle';
+import PropTypes from 'prop-types';
 
 
 export const FoundMovies = ({ founds }) => {
@@ -22,3 +23,6 @@ export const FoundMovies = ({ founds }) => {
   );
 };
 
+FoundMovies.propTypes={
+  founds: PropTypes.array.isRequired
+}

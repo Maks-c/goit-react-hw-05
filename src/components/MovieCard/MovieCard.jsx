@@ -1,5 +1,6 @@
 import {Link,useLocation} from "react-router-dom";
-import {LinkBtn,Container,Feature,CardBlock,H2} from "./MovieCardStyle";
+import {LinkBtn,Container,Feature,CardBlock,H2,LinkCast} from "./MovieCardStyle";
+import PropTypes from 'prop-types';
 
 
 
@@ -23,7 +24,7 @@ export const MovieCard = ({item}) => {
       </CardBlock>
       <h2>Additional information</h2>
       <hr/>
-      <Link to='cast' state={{from:location}}>Cast</Link>
+      <LinkCast to='cast' state={{from:location}}>Cast</LinkCast>
       <Link to='reviews' state={{from:location}}>Reviews</Link>
 
     </Container>
@@ -31,3 +32,6 @@ export const MovieCard = ({item}) => {
   )
 };
 
+MovieCard.propTypes={
+  item:PropTypes.array.isRequired
+}

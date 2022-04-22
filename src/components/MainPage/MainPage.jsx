@@ -1,10 +1,10 @@
 import React from 'react';
 import { ImageGalleryStyle, ImageGalleryItemImage, ImageGalleryItemStyle, Container } from './MainPageStyle';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const MainPage = ({ items }) => {
   const location = useLocation();
-  console.log(location);
   return (
     <Container>
       <main>
@@ -24,3 +24,6 @@ export const MainPage = ({ items }) => {
   );
 };
 
+MainPage.propTypes={
+  items:PropTypes.array.isRequired
+}

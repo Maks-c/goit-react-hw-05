@@ -1,20 +1,9 @@
 import {Link,useLocation} from "react-router-dom";
 import { BtnGoBack } from '../BtnGoBack/GoBack';
-import {LinkBtn,Container,Feature,CardBlock,H2,LinkCast} from "./MovieCardStyle";
+import {Container,Feature,CardBlock,H2,LinkCast} from "./MovieCardStyle";
 import PropTypes from 'prop-types';
 
 
-//
-// export const BackBtn = () => {
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   const handleClick = () => {
-//     navigate(location?.state?.from ?? '/movies');
-//   }
-//   return (
-//     <BackBtnStyled type="button" onClick={handleClick}><BsArrowLeft size='20px'/> Go back</BackBtnStyled>
-//   )
-// }
 
 
 
@@ -29,7 +18,6 @@ export const MovieCard = ({item}) => {
   return (
     <Container>
       <BtnGoBack/>
-      {/*<LinkBtn type='button' to={ location?.state?.from ?? '/movies' }>Go Back</LinkBtn>*/}
       <H2>{item.title} <span>{releaseYear}</span></H2>
       <CardBlock>
         <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.title}/>
